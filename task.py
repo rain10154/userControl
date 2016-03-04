@@ -33,10 +33,10 @@ class myThread (threading.Thread):
     def taskLoad(self):
         self.timer_start()
         while True:
-            time.sleep(1)
+            time.sleep(60)
 
     def timer_start(self):
-        t = threading.Timer(10, self.test_func)
+        t = threading.Timer(60 * 60, self.test_func)
         t.start()
 
     def test_func(self):
