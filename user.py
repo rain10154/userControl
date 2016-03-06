@@ -96,7 +96,7 @@ if __name__ == '__main__':
     thread1 = task.myThread(1, "Thread-1", 1, newUser, config)
     thread1.start()
 
-    app.run(port=10000,debug=False)
+    app.run(host = '0.0.0.0', port=10000,debug=False)
 
 
 
