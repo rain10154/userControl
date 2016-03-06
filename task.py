@@ -43,7 +43,7 @@ class myThread (threading.Thread):
         newTime = datetime.datetime.now()
         logger.info("time is :%s" ,newTime)
         day = int((newTime - self.oldTime).days)
-        if day == 0:
+        if day > 0:
             self.lowDays()
 
         logger.info("day is :%s", day)
