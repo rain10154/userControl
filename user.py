@@ -25,7 +25,7 @@ shell = {
 }
 
 ssConfig = {
-    "server": "127.0.0.1",
+    "server": "0.0.0.0",
     "local_port": 1081,
     "timeout": 300,
     "method": "aes-256-cfb"
@@ -95,6 +95,13 @@ if __name__ == '__main__':
             sys.exit(1)
 
     queryCurrentUser()
+
+    newUser = One.User()
+    ssConfig['port_password'] = newUser.ssDict
+
+    write_dict_to_file(config['ssFile'], ssConfig)
+
+
 
     os.system(shell['start'])
 
