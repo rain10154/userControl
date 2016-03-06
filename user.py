@@ -1,4 +1,5 @@
 from flask import Flask,jsonify
+from werkzeug.contrib.fixers import ProxyFix
 
 
 from common import parse_json_in_str,logger,write_dict_to_file
@@ -9,7 +10,9 @@ import logging.config
 import sys
 import os
 
+
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 fileName = 'config'
 
