@@ -48,6 +48,12 @@ def addUser():
 def addTestUser():
     newUser = One.User()
     (newName, newPassword) = newUser.addUser(config['file'], test=True)
+
+    ssConfig['port_password'] = newUser.ssDict
+    logger.info("users = %s" , newUser.userDict)
+    logger.info("config = %s", ssConfig)
+    write_dict_to_file(config['ssFile'], ssConfig)
+
     os.system(shell['restart'])
     return jsonify({'name':newName,'password':newPassword})
 
