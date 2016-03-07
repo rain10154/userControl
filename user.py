@@ -98,9 +98,7 @@ if __name__ == '__main__':
 
     newUser = One.User()
     ssConfig['port_password'] = newUser.ssDict
-
     write_dict_to_file(config['ssFile'], ssConfig)
-
 
 
     os.system(shell['start'])

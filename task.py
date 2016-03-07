@@ -56,7 +56,7 @@ class myThread (threading.Thread):
         for key in self.newUser.userDict:
             value = self.newUser.userDict[key]
             days = int(value[2])
-            if days > 1:
+            if days >= 1:
                 value[2] = days-1
                 userDict[key] = value
                 ssDict[key] = value[1]
