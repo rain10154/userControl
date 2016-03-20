@@ -95,7 +95,6 @@ def queryCurrentUser():
 
 
 
-
 if __name__ == '__main__':
     #query config
     with open(fileName, 'rb') as f:
