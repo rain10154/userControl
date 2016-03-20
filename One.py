@@ -1,6 +1,6 @@
 import random
 from common import logger
-
+from task import writeSStoFile
 
 commonStr = 'abcdefghijklmnopqrstuvwxyz1234567890'
 
@@ -63,3 +63,13 @@ class User(Singleton):
             break
 
         return (newName, newPassword)
+
+    def addUserTime(self, fileName, user, time):
+        if not user in self.userDict:
+            return
+        value = self.userDict[user]
+        days = int(value[2])
+        value[2] = days + time * 30
+        self.userDict[user] = value
+        writeSStoFile(fileName, self.userDict)
+        return

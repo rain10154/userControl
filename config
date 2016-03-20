@@ -1,4 +1,4 @@
 {
     "file":"ssUser",
-    "ssFile":"/etc/shadowsocks.json"
+    "ssFile":"ssConfig"
 }

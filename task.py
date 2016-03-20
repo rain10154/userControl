@@ -41,13 +41,14 @@ class myThread (threading.Thread):
 
     def test_func(self):
         newTime = datetime.datetime.now()
-        logger.info("time is :%s" ,newTime)
-        day = int((newTime - self.oldTime).days)
+        logger.info("old time is:%s", self.oldTime)
+        logger.info("new time is :%s" ,newTime)
+        day = (newTime - self.oldTime).days
         if day > 0:
             self.lowDays()
+            self.oldTime = newTime
 
         logger.info("day is :%s", day)
-        self.oldTime = newTime
         self.timer_start()
 
     def lowDays(self):

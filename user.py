@@ -1,5 +1,4 @@
-from flask import Flask,jsonify
-from werkzeug.contrib.fixers import ProxyFix
+from flask import Flask,jsonify,request
 
 
 from common import parse_json_in_str,logger,write_dict_to_file
@@ -12,7 +11,6 @@ import os
 
 
 app = Flask(__name__)
-app.wsgi_app = ProxyFix(app.wsgi_app)
 
 fileName = 'config'
 
@@ -58,6 +56,20 @@ def addTestUser():
     return jsonify({'name':newName,'password':newPassword})
 
 
+@app.route('/addUserTime', methods=['POST'])
+def addUserTime():
+    data = request.json
+    logger.info("data = %s" + str(data))
+    name = data['name']
+    days = data['days']
+    if name is None or days is None:
+        return "param is null"
+    newUser = One.User()
+    newUser.addUserTime(config['file'], int(name), days)
+    return "ok!"
+
+
+
 def queryCurrentUser():
     newUser = One.User()
     ssDict = {}
@@ -65,11 +77,11 @@ def queryCurrentUser():
     try:
         userFile = open(config['file'], "r")
         for line in userFile:
+            line=line.strip('\n')
             oneUserStr = line.split(",")
-            if (cmp(oneUserStr[0], One.port) > 0):
-                One.port = int (oneUserStr[0])
             oneUser = [oneUserStr[0], oneUserStr[1], oneUserStr[2]]
-            userDict[oneUserStr[0]] = oneUser
+            userName =  int(oneUserStr[0])
+            userDict[userName] = oneUser
             ssDict[oneUserStr[0]] = oneUserStr[1]
         userFile.close()
     except IOError as ioe:
@@ -107,7 +119,7 @@ if __name__ == '__main__':
     thread1 = task.myThread(1, "Thread-1", 1, newUser, config)
     thread1.start()
 
-    app.run(host = '0.0.0.0', port=10000,debug=False)
+    app.run(host="0.0.0.0", port=10000,debug=False)
 
 
 
