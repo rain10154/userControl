@@ -25,7 +25,7 @@ class myThread (threading.Thread):
         self.name = name
         self.counter = counter
         self.newUser = newUser
-        self.oldTime = datetime.datetime.now()
+        self.oldTime = datetime.datetime.today()
         self.config = config
     def run(self):
         self.taskLoad()
@@ -40,7 +40,7 @@ class myThread (threading.Thread):
         t.start()
 
     def test_func(self):
-        newTime = datetime.datetime.now()
+        newTime = datetime.datetime.today()
         logger.info("old time is:%s", self.oldTime)
         logger.info("new time is :%s" ,newTime)
         day = (newTime - self.oldTime).days
