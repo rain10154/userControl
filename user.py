@@ -26,7 +26,8 @@ ssConfig = {
     "server": "0.0.0.0",
     "local_port": 1081,
     "timeout": 300,
-    "method": "aes-256-cfb"
+    "method": "aes-256-cfb",
+    "fast_open": True
 }
 
 @app.route('/addUser', methods=['GET'])
