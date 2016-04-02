@@ -26,7 +26,7 @@ ssConfig = {
     "server": "0.0.0.0",
     "local_port": 1080,
     "timeout": 500,
-    "method": "aes-256-cfb",
+    "method": "rc4-md5",
     "fast_open": True
 }
 
