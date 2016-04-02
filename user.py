@@ -24,7 +24,7 @@ shell = {
 
 ssConfig = {
     "server": "0.0.0.0",
-    "local_port": 1081,
+    "local_port": 1080,
     "timeout": 300,
     "method": "aes-256-cfb",
     "fast_open": True
